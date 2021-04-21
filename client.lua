@@ -44,8 +44,7 @@ Citizen.CreateThread(function()
         local mycoords = GetEntityCoords(carpedDrive)
 
         if foundcar == true then
-            --if #(vector3(mycoords.x, mycoords.y, mycoords.z) - pedCoords) < 1.5 then
-            if #(mycoords - pedCoords) < 1.5 then
+            if #(vector3(mycoords.x, mycoords.y, mycoords.z) - pedCoords) < 1.5 then
                 DrawText3Ds(mycoords.x, mycoords.y, mycoords.z, "[E] To deliver Oxy!") 
                 if IsControlJustReleased(0,38) and boxesped ~= 0 and boxinhand then
                     SetEntityAsNoLongerNeeded(pedCar)
@@ -78,8 +77,7 @@ Citizen.CreateThread(function()
         local carcoords = GetEntityCoords(oxyVehicle)
 
         if Oxyrun == true then
-            --if #(vector3(carcoords.x, carcoords.y, carcoords.z) - pedCoords) < 2.0 then
-            if #(carcoords - pedCoords) < 2.0 then
+            if #(vector3(carcoords.x, carcoords.y, carcoords.z) - pedCoords) < 2.0 then
                 if not IsPedInVehicle(PlayerPedId(), oxyVehicle, true) then
                     DrawText3Ds(carcoords.x, carcoords.y, carcoords.z, "[E] To take out package! " ..boxes.."/5 boxes left") 
                     if IsControlJustReleased(0,38) and boxes ~= 0 and not boxinhand then
@@ -141,8 +139,7 @@ Citizen.CreateThread(function()
             QBCore.Functions.Notify("Something happened to one of your clients another one is on the way!", "primary")
         end
 
-        --if gotdest and #(vector3(currentDestination.x, currentDestination.y, currentDestination.z) - pedCoords) < 50.0 and started == true and pedisspawned == false then
-        if gotdest and #(currentDestination - pedCoords) < 50.0 and started == true and pedisspawned == false then
+        if gotdest and #(vector3(currentDestination.x, currentDestination.y, currentDestination.z) - pedCoords) < 50.0 and started == true and pedisspawned == false then
             local pedId = PlayerPedId()
             local pedCoords = GetEntityCoords(pedId)
             QBCore.Functions.Notify("You are close to the drop off wait for your clients!", "primary")
