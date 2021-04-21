@@ -1,5 +1,5 @@
-RLCore = nil
-TriggerEvent("RLCore:GetObject",function(obj) RLCore = obj end)
+QBCore = nil
+TriggerEvent("QBCore:GetObject",function(obj) QBCore = obj end)
 
 started = false
 gotdest = false
@@ -56,9 +56,9 @@ Citizen.CreateThread(function()
                     Wait(100000)
                     GetRandomAI()
                 elseif IsControlJustReleased(0,38) and boxesped == 0 then
-                    RLCore.Functions.Notify("No more packages!", "error")
+                    QBCore.Functions.Notify("No more packages!", "error")
                 elseif IsControlJustReleased(0,38) and not boxinhand then
-                    RLCore.Functions.Notify("Is this a joke? Are you a cop! Im out of here!!", "primary")
+                    QBCore.Functions.Notify("Is this a joke? Are you a cop! Im out of here!!", "primary")
                     SetEntityAsNoLongerNeeded(pedCar)
                     SetEntityAsNoLongerNeeded(carpedDrive)
                     SetPedScream(carpedDrive)
@@ -84,14 +84,14 @@ Citizen.CreateThread(function()
                         boxinhand = true
                         boxes = boxes - 1
                     elseif IsControlJustReleased(0,38) and boxinhand then
-                        RLCore.Functions.Notify("You already have a box in your hand!", "error")
+                        QBCore.Functions.Notify("You already have a box in your hand!", "error")
                     end
                 end
             end	
         end
 
         if boxesped == 0 then 
-            RLCore.Functions.Notify("You don't have anymore packages left. Dump the car it might be hot!", "error")
+            QBCore.Functions.Notify("You don't have anymore packages left. Dump the car it might be hot!", "error")
             SetEntityAsNoLongerNeeded(pedCar)
             SetEntityAsNoLongerNeeded(carpedDrive)
             pedisspawned = false
@@ -109,7 +109,7 @@ Citizen.CreateThread(function()
             test = false
             started = false
             Oxyrun = false
-            RLCore.Functions.Notify("Yo.. you destroyed the car man! I will get someone else to deilver the packages!", "error")
+            QBCore.Functions.Notify("Yo.. you destroyed the car man! I will get someone else to deilver the packages!", "error")
         end
 
         --if (not DoesEntityExist(carpedDrive) or GetVehicleEngineHealth(pedCar) < 100.0) or IsPedFleeing(carpedDrive) and started and pedisspawned then
@@ -121,7 +121,7 @@ Citizen.CreateThread(function()
             foundcar = false
             test = false
             Oxyrun = false
-            RLCore.Functions.Notify("Something happened to one of your clients another one is on the way!", "primary")
+            QBCore.Functions.Notify("Something happened to one of your clients another one is on the way!", "primary")
         end
 
         if IsPedFleeing(carpedDrive, 1) and started and pedisspawned then
@@ -132,14 +132,14 @@ Citizen.CreateThread(function()
             foundcar = false
             test = false
             Oxyrun = false
-            RLCore.Functions.Notify("Something happened to one of your clients another one is on the way!", "primary")
+            QBCore.Functions.Notify("Something happened to one of your clients another one is on the way!", "primary")
         end
 
         --if gotdest and #(vector3(currentDestination.x, currentDestination.y, currentDestination.z) - pedCoords) < 50.0 and started == true and pedisspawned == false then
         if gotdest and #(currentDestination - pedCoords) < 50.0 and started == true and pedisspawned == false then
             local pedId = PlayerPedId()
             local pedCoords = GetEntityCoords(pedId)
-            RLCore.Functions.Notify("You are close to the drop off wait for your clients!", "primary")
+            QBCore.Functions.Notify("You are close to the drop off wait for your clients!", "primary")
             pedisspawned = true
             RemoveBlip(DeliveryBlip)
             GetRandomAI()
