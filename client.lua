@@ -284,9 +284,10 @@ function spawnOxyCar()
     boxes = 5
     boxesped = 5
     oxyVehicle = CreateVehicle(car, -1563.49, -430.56, 37.87, 158.06, true, false)
-	local plt = GetVehicleNumberPlateText(oxyVehicle)
-	DecorSetInt(oxyVehicle,"GamemodeCar",955)
-	SetVehicleHasBeenOwnedByPlayer(oxyVehicle,true)
+    local plt = GetVehicleNumberPlateText(oxyVehicle)
+    DecorSetInt(oxyVehicle,"GamemodeCar",955)
+    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,true)
+    TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(oxyVehicle))
     --GetRandomAI()
 
     while true do
